@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "kafka.dynamic.consumer.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable dynamic Kafka consumer feature",
+      "defaultValue": false
+    },
+    {
+      "name": "kafka.dynamic.consumer.max-lag-threshold",
+      "type": "java.lang.Long",
+      "description": "Maximum message lag threshold to trigger new consumer group",
+      "defaultValue": 10000
+    },
+    {
+      "name": "kafka.dynamic.consumer.max-delay-ms",
+      "type": "java.lang.Long",
+      "description": "Maximum processing delay in milliseconds",
+      "defaultValue": 30000
+    },
+    {
+      "name": "kafka.dynamic.consumer.backlog-process-strategy",
+      "type": "java.lang.String",
+      "description": "Strategy for processing backlog messages: PROCESS_ALL, PROCESS_RECENT, IGNORE",
+      "defaultValue": "PROCESS_ALL"
+    }
+  ]
+} 
