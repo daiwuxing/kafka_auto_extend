@@ -1,0 +1,7 @@
+kafka:
+  dynamic:
+    consumer:
+      enabled: true
+      max-lag-threshold: 10000
+      max-delay-ms: 30000
+      backlog-process-strategy: PROCESS_ALL
