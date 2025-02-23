@@ -1,4 +1,4 @@
-package com.example;
+package com.github.daiwx.kafka.backlog.test;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -7,26 +7,29 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 
-import java.util.HashMap;
 import java.util.Map;
 
-@TestConfiguration
+/**
+ * Test configuration for Kafka components.
+ */
+@TestConfiguration(proxyBeanMethods = false)
 public class TestConfig {
 
     @Bean
     public Map<String, Object> producerConfigs(EmbeddedKafkaBroker embeddedKafkaBroker) {
-        Map<String, Object> props = new HashMap<>(
-            KafkaTestUtils.producerProps(embeddedKafkaBroker));
-        return props;
+        return KafkaTestUtils.producerProps(embeddedKafkaBroker);
+    }
+
+    @Bean
+    public DefaultKafkaProducerFactory<String, String> producerFactory(
+            EmbeddedKafkaBroker embeddedKafkaBroker,
+            Map<String, Object> producerConfigs) {
+        return new DefaultKafkaProducerFactory<>(producerConfigs);
     }
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate(
-            EmbeddedKafkaBroker embeddedKafkaBroker,
-            Map<String, Object> producerConfigs) {
-        return new KafkaTemplate<>(
-            new DefaultKafkaProducerFactory<>(
-                KafkaTestUtils.producerProps(embeddedKafkaBroker)
-            ));
+            DefaultKafkaProducerFactory<String, String> producerFactory) {
+        return new KafkaTemplate<>(producerFactory);
     }
 } 
