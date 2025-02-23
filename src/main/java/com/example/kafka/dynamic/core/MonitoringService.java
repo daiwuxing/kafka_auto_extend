@@ -1,3 +1,5 @@
+package com.example.kafka.dynamic.core;
+import com.example.kafka.dynamic.config.KafkaDynamicConsumerProperties;
 import org.springframework.stereotype.Service;
 
 @Service

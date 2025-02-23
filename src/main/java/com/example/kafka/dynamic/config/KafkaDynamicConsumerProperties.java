@@ -1,3 +1,5 @@
+package com.example.kafka.dynamic.config;
+import com.example.kafka.dynamic.model.ProcessingStrategy;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "kafka.dynamic.consumer")
