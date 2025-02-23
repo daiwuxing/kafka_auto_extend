@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.example.kafka.dynamic.config.KafkaDynamicConsumerAutoConfiguration 
+com.github.daiwx.kafka.backlog.config.KafkaBacklogAutoConfiguration 
